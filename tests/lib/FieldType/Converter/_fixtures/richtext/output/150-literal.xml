@@ -1,7 +1,17 @@
-<section
-        xmlns="http://docbook.org/ns/docbook"
-        xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom"
-        xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml"
-        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0-variant ezpublish-1.0">
-<!--Literal not yet supported. So text in literal will not necessary be placed inside a paragraph atm. A error will be raised though-->
-    <para>foobar1.</para>foobar2.</section>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:ezcustom="http://ez.no/xmlns/ezpublish/docbook/custom" xmlns:ezxhtml="http://ez.no/xmlns/ezpublish/docbook/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0-variant ezpublish-1.0">
+  <para>some text</para>
+  <eztemplate name="html">
+    <ezcontent>this is some &amp;lt;b&amp;gt;html&amp;lt;/b&amp;gt; text</ezcontent>
+  </eztemplate>
+  <para>next one</para>
+  <programlisting>ordinary literal</programlisting>
+  <programlisting>more complicated
+            literal
+            tag</programlisting>
+  <para>the php one:</para>
+  <programlisting language="php">function foobar()
+            {
+            thisIsSomePHPCode();
+            return 0;
+            }</programlisting>
+</section>

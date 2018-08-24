@@ -50,6 +50,35 @@
     </xsl:element>
   </xsl:template>
 
+  <xsl:template match="literal">
+    <xsl:choose>
+      <xsl:when test="@class = 'html'">
+        <xsl:element name="eztemplate">
+          <xsl:attribute name="name">
+            <xsl:value-of select="'html'"/>
+          </xsl:attribute>
+          <xsl:element name="ezcontent">
+              <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>
+              <xsl:value-of select="./text()"/>
+              <xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
+          </xsl:element>
+        </xsl:element>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:element name="programlisting">
+          <xsl:if test="@class">
+            <xsl:attribute name="language">
+              <xsl:value-of select="@class"/>
+            </xsl:attribute>
+          </xsl:if>
+          <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>
+          <xsl:value-of select="./text()"/>
+          <xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
+        </xsl:element>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template match="paragraph[@ez-temporary]/custom">
     <xsl:element name="eztemplate" namespace="http://docbook.org/ns/docbook">
       <xsl:attribute name="name">
