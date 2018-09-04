@@ -8,6 +8,10 @@
             xmlns:tmp="http://ez.no/namespaces/ezpublish3/temporary/">
         <literal class="html">this is some &lt;b&gt;html&lt;/b&gt; text</literal>
     </paragraph>
+    <paragraph
+            xmlns:tmp="http://ez.no/namespaces/ezpublish3/temporary/">
+        <literal class="html">Literal with CNAME end sequence here : ]]&gt; and some more text here</literal>
+    </paragraph>
     <paragraph>next one</paragraph>
     <paragraph
             xmlns:tmp="http://ez.no/namespaces/ezpublish3/temporary/">
@@ -15,9 +19,10 @@
     </paragraph>
     <paragraph
             xmlns:tmp="http://ez.no/namespaces/ezpublish3/temporary/">
-        <literal>more complicated
-            literal
-            tag</literal>
+        <literal>more
+            complicated
+             literal
+              tag</literal>
     </paragraph>
     <paragraph>the php one:</paragraph>
     <paragraph

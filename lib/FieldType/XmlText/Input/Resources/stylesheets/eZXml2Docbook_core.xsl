@@ -59,7 +59,7 @@
           </xsl:attribute>
           <xsl:element name="ezcontent">
               <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>
-              <xsl:value-of select="./text()"/>
+              <xsl:value-of disable-output-escaping="yes" select="./text()"/>
               <xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
           </xsl:element>
         </xsl:element>
@@ -72,7 +72,7 @@
             </xsl:attribute>
           </xsl:if>
           <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>
-          <xsl:value-of select="./text()"/>
+          <xsl:value-of disable-output-escaping="yes" select="./text()"/>
           <xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
         </xsl:element>
       </xsl:otherwise>
