@@ -13,9 +13,15 @@
              literal
               tag]]></programlisting>
   <para>the php one:</para>
-  <programlisting language="php"><![CDATA[function foobar()
-            {
-            thisIsSomePHPCode();
-            return 0;
-            }]]></programlisting>
+  <programlisting ezxhtml:class="php"><![CDATA[function foobar()
+{
+    thisIsSomePHPCode();
+    return 0;
+}]]></programlisting>
+  <para>the php one with language attribute:</para>
+  <programlisting language="php" ezxhtml:class="red">function foobar()
+{
+    thisIsSomePHPCode();
+    return 0;
+}</programlisting>
 </section>
