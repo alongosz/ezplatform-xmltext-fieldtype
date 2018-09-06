@@ -481,12 +481,15 @@ class RichText implements Converter
     }
 
     /**
-     * CDATAs cannot contain the sequence ']]>'. If the literal contains that sequence we split the content into
-     * multiple CDATAs by replacing that end sequence with '<![CDATA[]]]]><![CDATA[>]]>'
+     * We need to avoid two scenarios:
+     * - CDATA's data cannot contain the sequence ']]>' as that will terminate the CDATA section.
+     * - The CDATA cannot contain </pre> as that will terminate the </pre> tag when rendered in browser.
+     *
+     * Therefore, we'll encode all applicable characters in CDATA to html entities
      *
      * @param DOMDocument $document
      */
-    protected function encodeCDataEndSequenceInLiteral(DOMDocument $document)
+    protected function encodeCDataInLiteral(DOMDocument $document)
     {
         $xpath = new DOMXPath($document);
 
@@ -495,7 +498,7 @@ class RichText implements Converter
         $elements = $xpath->query($xpathExpression);
 
         foreach ($elements as $element) {
-            $element->textContent = str_replace(']]>', ']]]]><![CDATA[>', $element->textContent);
+            $element->textContent = htmlentities($element->textContent, ENT_COMPAT, 'UTF-8');
         }
     }
 
@@ -518,7 +521,7 @@ class RichText implements Converter
         $this->fixLinksWithRemoteIds($inputDocument, $contentFieldId);
         $this->flattenLinksInLinks($inputDocument, $contentFieldId);
         $this->moveEmbedsInHeaders($inputDocument, $contentFieldId);
-        $this->encodeCDataEndSequenceInLiteral($inputDocument);
+        $this->encodeCDataInLiteral($inputDocument);
 
         try {
             $convertedDocument = $this->getConverter()->convert($inputDocument);
