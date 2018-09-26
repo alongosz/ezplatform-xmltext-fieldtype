@@ -1,3 +1,6 @@
+imports:
+    - { resource: gateway.yml }
+
 parameters:
     ezpublish_rest.field_type_processor.ezxmltext.class: eZ\Publish\Core\REST\Common\FieldTypeProcessor\XmlTextProcessor
 
@@ -10,7 +13,7 @@ services:
     ezxmltext.command.convert_to_richtext:
         class: EzSystems\EzPlatformXmlTextFieldTypeBundle\Command\ConvertXmlTextToRichTextCommand
         arguments:
-            - "@ezpublish.persistence.connection"
+            - "@ezxmltext.command.gateway.richtext_converter"
             - "@ezxmltext.richtext_converter"
             - "@?logger"
         tags:

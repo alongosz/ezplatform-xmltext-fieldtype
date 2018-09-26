@@ -1,0 +1,5 @@
+services:
+    ezxmltext.command.gateway.richtext_converter:
+        class: EzSystems\EzPlatformXmlTextFieldTypeBundle\Command\Gateway\RichTextConverterGateway
+        arguments:
+            - '@ezpublish.persistence.connection'
